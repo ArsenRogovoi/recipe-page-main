@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import './fonts.css';
 
+@layer base {
+    h2 {
+        color: var(--color-brown-800);
+        font-family: var(--font-young-serif);
+        font-size: var(--text-2xl);
+        font-weight: var(--font-weight-medium);
+    }
+}
+
 @theme {
     --default-font-family: "Outfit";
     --font-young-serif: "YoungSerif";
