@@ -3,6 +3,7 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-rose-50: hsl(330, 100%, 98%);
@@ -10,8 +11,6 @@
     --color-stone-600: hsl(30, 10%, 34%);
     --color-black: #000;
     --spacing: 0.25rem;
-    --text-xs: 0.75rem;
-    --text-xs--line-height: calc(1 / 0.75);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
@@ -22,6 +21,7 @@
     --default-font-family: "Outfit";
     --default-mono-font-family: var(--font-mono);
     --font-young-serif: "YoungSerif";
+    --color-stone-150: hsl(30, 18%, 87%);
     --color-brown-800: hsl(14, 45%, 36%);
   }
 }
@@ -171,6 +171,9 @@
   }
 }
 @layer utilities {
+  .relative {
+    position: relative;
+  }
   .static {
     position: static;
   }
@@ -195,18 +198,37 @@
   .resize {
     resize: both;
   }
-  .list-disc {
-    list-style-type: disc;
+  .list-inside {
+    list-style-position: inside;
+  }
+  .list-outside {
+    list-style-position: outside;
+  }
+  .list-decimal {
+    list-style-type: decimal;
   }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-b-stone-150 {
+    border-bottom-color: var(--color-stone-150);
   }
   .bg-rose-50 {
     background-color: var(--color-rose-50);
   }
   .p-6 {
     padding: calc(var(--spacing) * 6);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
   }
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
@@ -216,6 +238,12 @@
   }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
+  }
+  .pl-6 {
+    padding-left: calc(var(--spacing) * 6);
+  }
+  .pl-7 {
+    padding-left: calc(var(--spacing) * 7);
   }
   .font-young-serif {
     font-family: var(--font-young-serif);
@@ -252,22 +280,86 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
-  .marker\:text-xs {
+  .marker\:font-mono {
     & *::marker {
-      font-size: var(--text-xs);
-      line-height: var(--tw-leading, var(--text-xs--line-height));
+      font-family: var(--font-mono);
     }
     &::marker {
-      font-size: var(--text-xs);
-      line-height: var(--tw-leading, var(--text-xs--line-height));
+      font-family: var(--font-mono);
     }
     & *::-webkit-details-marker {
-      font-size: var(--text-xs);
-      line-height: var(--tw-leading, var(--text-xs--line-height));
+      font-family: var(--font-mono);
     }
     &::-webkit-details-marker {
-      font-size: var(--text-xs);
-      line-height: var(--tw-leading, var(--text-xs--line-height));
+      font-family: var(--font-mono);
+    }
+  }
+  .marker\:font-serif {
+    & *::marker {
+      font-family: var(--font-serif);
+    }
+    &::marker {
+      font-family: var(--font-serif);
+    }
+    & *::-webkit-details-marker {
+      font-family: var(--font-serif);
+    }
+    &::-webkit-details-marker {
+      font-family: var(--font-serif);
+    }
+  }
+  .marker\:font-\[var\(--default-font-family\)\] {
+    & *::marker {
+      --tw-font-weight: var(--default-font-family);
+      font-weight: var(--default-font-family);
+    }
+    &::marker {
+      --tw-font-weight: var(--default-font-family);
+      font-weight: var(--default-font-family);
+    }
+    & *::-webkit-details-marker {
+      --tw-font-weight: var(--default-font-family);
+      font-weight: var(--default-font-family);
+    }
+    &::-webkit-details-marker {
+      --tw-font-weight: var(--default-font-family);
+      font-weight: var(--default-font-family);
+    }
+  }
+  .marker\:font-medium {
+    & *::marker {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
+    }
+    &::marker {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
+    }
+    & *::-webkit-details-marker {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
+    }
+    &::-webkit-details-marker {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+  .marker\:font-semibold {
+    & *::marker {
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
+    }
+    &::marker {
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
+    }
+    & *::-webkit-details-marker {
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
+    }
+    &::-webkit-details-marker {
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
     }
   }
   .marker\:text-brown-800 {
@@ -284,18 +376,56 @@
       color: var(--color-brown-800);
     }
   }
-  .marker\:text-rose-800 {
-    & *::marker {
+  .before\:absolute {
+    &::before {
+      content: var(--tw-content);
+      position: absolute;
+    }
+  }
+  .before\:top-1\/2 {
+    &::before {
+      content: var(--tw-content);
+      top: calc(1/2 * 100%);
+    }
+  }
+  .before\:left-0 {
+    &::before {
+      content: var(--tw-content);
+      left: calc(var(--spacing) * 0);
+    }
+  }
+  .before\:-translate-1\/2 {
+    &::before {
+      content: var(--tw-content);
+      --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+      --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+  .before\:text-xl {
+    &::before {
+      content: var(--tw-content);
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+  .before\:text-brown-800 {
+    &::before {
+      content: var(--tw-content);
+      color: var(--color-brown-800);
+    }
+  }
+  .before\:text-rose-800 {
+    &::before {
+      content: var(--tw-content);
       color: var(--color-rose-800);
     }
-    &::marker {
-      color: var(--color-rose-800);
-    }
-    & *::-webkit-details-marker {
-      color: var(--color-rose-800);
-    }
-    &::-webkit-details-marker {
-      color: var(--color-rose-800);
+  }
+  .before\:content-\[\'•\'\] {
+    &::before {
+      content: var(--tw-content);
+      --tw-content: '•';
+      content: var(--tw-content);
     }
   }
 }
@@ -329,12 +459,36 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-content {
+  syntax: "*";
+  initial-value: "";
+  inherits: false;
+}
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
       --tw-outline-style: solid;
+      --tw-content: "";
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
     }
   }
 }
