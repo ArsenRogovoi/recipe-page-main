@@ -494,6 +494,16 @@
       margin-block: calc(var(--spacing) * 3);
     }
   }
+  .sm\:max-w-3\/5 {
+    @media (width >= 40rem) {
+      max-width: calc(3/5 * 100%);
+    }
+  }
+  .sm\:max-w-\[600px\] {
+    @media (width >= 40rem) {
+      max-width: 600px;
+    }
+  }
   .sm\:rounded-2xl {
     @media (width >= 40rem) {
       border-radius: var(--radius-2xl);
@@ -537,6 +547,11 @@
   .md\:m-auto {
     @media (width >= 48rem) {
       margin: auto;
+    }
+  }
+  .md\:max-w-3\/5 {
+    @media (width >= 48rem) {
+      max-width: calc(3/5 * 100%);
     }
   }
   .md\:max-w-\[768px\] {
